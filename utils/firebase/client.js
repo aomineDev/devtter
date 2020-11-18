@@ -12,7 +12,7 @@ const firebaseConfig = {
   measurementId: 'G-51W2K0RBV9'
 }
 
-firebase.apps.length === 0 && firebase.initializeApp(firebaseConfig)
+!firebase.apps.length && firebase.initializeApp(firebaseConfig)
 
 function mapUserFormFirebaseAuthToUser (user) {
   const { displayName, email, photoURL: avatar } = user
@@ -25,20 +25,23 @@ function mapUserFormFirebaseAuthToUser (user) {
 }
 
 export function onAuthStateChanged (onChange) {
-  // firebase.auth().signOut()
   firebase
     .auth()
     .onAuthStateChanged(user => {
-      if (!user) {
-        onChange(null)
-
-        return
-      }
-
-      const normalizedUser = mapUserFormFirebaseAuthToUser(user)
+      const normalizedUser = user && mapUserFormFirebaseAuthToUser(user)
 
       onChange(normalizedUser)
     })
+}
+
+export function getUser () {
+  const { displayName, email, photoURL: avatar } = firebase.auth().currentUser
+
+  return {
+    displayName,
+    email,
+    avatar
+  }
 }
 
 export function loginWithGitHub () {

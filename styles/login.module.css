@@ -1,0 +1,29 @@
+.login {
+  display: grid;
+  height: 100%;
+  place-content: center;
+  place-items: center;
+}
+.title {
+  color: var(--primary);
+  font-weight: 800;
+  font-size: 32px;
+  margin-bottom: 10px;
+}
+.subtitle {
+  color: var(--secondary);
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+.btn {
+  background-color: var(--dark);
+  color: var(--light);
+}
+.userBox {
+  display: flex;
+  align-items: center;
+}
+.username {
+  margin-left: 10px;
+}
