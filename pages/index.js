@@ -1,20 +1,23 @@
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
+import { useRouter } from 'next/router'
 
-import { loginWithGitHub, onAuthStateChanged } from 'utils/firebase/client'
+import { loginWithGitHub } from 'utils/firebase/client'
+import useUser from 'hooks/useUser'
 
 import Head from 'next/head'
 import Image from 'next/image'
-import Button from 'components/Button'
-import Avatar from 'components/Avatar'
+import Button from 'components/shared/Button'
+import SpinnerLoader from 'components/shared/SpinnerLoader'
 
 import styles from 'styles/login.module.css'
 
 export default function Login () {
-  const [user, setUser] = useState(undefined)
+  const user = useUser()
+  const router = useRouter()
 
   useEffect(() => {
-    onAuthStateChanged(setUser)
-  }, [])
+    user && router.push('/home')
+  }, [user])
 
   function handleClick () {
     loginWithGitHub()
@@ -42,25 +45,15 @@ export default function Login () {
           Talk about development<br />with developers 🐱‍💻
         </h2>
         {
-          user === undefined &&
-            <p>loading...</p>
-        }
-        {
-          user === null &&
-            <Button
+          user === null
+            ? <Button
               styleCustome={styles.btn}
               iconName='github'
               onClick={handleClick}
             >
               Login with GitHub
             </Button>
-        }
-        {
-          (user !== undefined && user !== null) &&
-            <div className={styles.userBox}>
-              <Avatar src={user.avatar} />
-              <p className={styles.username}><strong>{user.displayName}</strong></p>
-            </div>
+            : <SpinnerLoader />
         }
       </section>
     </>

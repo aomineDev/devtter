@@ -8,5 +8,6 @@
   --light: #fff;
   --primary: #0099ff;
   --secondary: #1c5480;
-  --bg-color: rgb(0, 153, 255, .3);
+  --light-primary: rgb(0, 153, 255, .3);
+  --light-dark: rgb(33, 33, 33, .1);
 }

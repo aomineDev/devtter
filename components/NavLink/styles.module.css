@@ -1,0 +1,27 @@
+.link {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  opacity: .6;
+  transition: .3s;
+}
+.link:hover {
+  background-color: var(--light-dark);
+}
+.active {
+  opacity: 1;
+}
+.active::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 3px;
+  width: 8px;
+  height: 8px;
+  background-color: var(--dark);
+  border-radius: 50%;
+}

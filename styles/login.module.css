@@ -1,8 +1,8 @@
 .login {
   display: grid;
   height: 100%;
-  place-content: center;
   place-items: center;
+  place-content: center;
 }
 .title {
   color: var(--primary);
@@ -19,11 +19,4 @@
 .btn {
   background-color: var(--dark);
   color: var(--light);
-}
-.userBox {
-  display: flex;
-  align-items: center;
-}
-.username {
-  margin-left: 10px;
 }

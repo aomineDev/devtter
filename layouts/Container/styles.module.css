@@ -1,14 +1,14 @@
-.timeline {
+.container {
   margin-top: 49px;
   overflow-y: auto;
   height: calc(100% - 98px);
 }
-.timeline::-webkit-scrollbar {
-  width: 8px;
+.container::-webkit-scrollbar {
+  width: 5px;
 }
-.timeline::-webkit-scrollbar-track {
+.container::-webkit-scrollbar-track {
   background-color: transparent;
 }
-.timeline::-webkit-scrollbar-thumb {
+.container::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, .1);
 }

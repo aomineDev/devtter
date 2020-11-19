@@ -1,6 +1,6 @@
-import Avatar from '../Avatar'
+import Avatar from '../shared/Avatar'
 
-import styles from './index.module.css'
+import styles from './styles.module.css'
 
 export default function Deveet ({ username, avatar, message, id }) {
   return (

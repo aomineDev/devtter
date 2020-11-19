@@ -1,0 +1,11 @@
+.btn {
+  position: relative;
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  transition: .3s;
+  background-color: transparent;
+}
+.btn:hover {
+  background-color: var(--light-dark);
+}
