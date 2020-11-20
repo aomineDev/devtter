@@ -3,60 +3,109 @@ import { useRouter } from 'next/router'
 
 import useUser from 'hooks/useUser'
 import useInput from 'hooks/useInput'
+import { createDeveet } from 'services/deveets'
+
+import Head from 'next/head'
 
 import HeaderLayout from 'layouts/HeaderLayout'
 
+import PageLoader from 'components/shared/PageLoader'
+import IconButton from 'components/shared/IconButton'
 import Button from 'components/shared/Button'
 import Avatar from 'components/shared/Avatar'
-import IconButton from 'components/shared/IconButton'
-import PageLoader from 'components/shared/PageLoader'
 
 import styles from './styles.module.css'
 
 export default function DeveetForm () {
-  const user = useUser()
-  const [input, handleChange] = useInput('')
-  const router = useRouter()
-  const [inputLength, setInputLength] = useState(0)
+  const [isLoading, setIsLoading] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(true)
+  const [isInvalidLength, setIsInvalidLength] = useState(true)
+  const [isTextAreaDisabled, setIsTextAreaDisabled] = useState(false)
 
-  function handleClick () {
-    window.alert(input)
-  }
+  const [input, handleChange] = useInput('')
+  const user = useUser()
+  const router = useRouter()
+
+  const lengthTrackerClassName = isInvalidLength ? styles.invalid : ''
+  const lengthLimit = 300
 
   useEffect(() => {
-    setInputLength(input.length)
+    if (input && input.length <= lengthLimit) handleToggleDisabled(false)
+    else handleToggleDisabled(true)
   }, [input])
+
+  function handleCreateDeveet () {
+    setIsLoading(true)
+    setIsTextAreaDisabled(true)
+
+    const deveet = {
+      avatar: user.avatar,
+      displayName: user.displayName,
+      userId: user.id,
+      content: input,
+      likesCount: 0,
+      sharedCount: 0,
+      commentsCount: 0
+    }
+
+    createDeveet({ deveet })
+      .then(docRef => router.push('/home'))
+      .catch(error => {
+        console.error('Error adding document: ', error)
+        setIsLoading(false)
+        setIsTextAreaDisabled(false)
+      })
+  }
+
+  function handleKeyPress (e) {
+    if (e.key === 'Enter') handleCreateDeveet()
+  }
+
+  function handleToggleDisabled (value) {
+    setIsDisabled(value)
+    setIsInvalidLength(value)
+  }
+
+  function handleIconClick () {
+    router.back()
+  }
 
   if (!user) return <PageLoader />
 
   return (
     <>
+      <Head>
+        <title>Publica un Deveet 🦇</title>
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
+
       <HeaderLayout>
-        <IconButton
-          iconName='arrow-left'
-          onClick={() => router.back()}
-        />
+        <IconButton iconName='arrow-left' onClick={handleIconClick} />
         <Button
-          onClick={handleClick}
-          styleCustome={styles.btn}
+          handleClick={handleCreateDeveet}
+          customeStyles={styles.btn}
+          isDisabled={isDisabled}
+          isLoading={isLoading}
         >
           Devittear
         </Button>
       </HeaderLayout>
       <form className={styles.form}>
         <div className={styles.avatar}>
-          <Avatar
-            src="https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/b7/b712b7cb4bead24d73e74f466dc5fbb2d0809a22_full.jpg"
-          />
+          <Avatar src={user.avatar} />
         </div>
         <div className={styles.textareaWrapper}>
           <textarea
             placeholder="¿Qué esta pasando?"
             className={styles.textarea}
             onChange={handleChange}
+            onKeyPress={handleKeyPress}
+            disabled={isTextAreaDisabled}
           />
-          <div className={styles.length}>
-            <p>{inputLength}/300</p>
+          <div className={styles.lengthTrackerWrapper}>
+            <p className={`${styles.lengthTracker} ${lengthTrackerClassName}`}>
+              {input.length}/{lengthLimit}
+            </p>
           </div>
         </div>
       </form>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import { onAuthStateChanged } from 'utils/firebase/client'
+import { onAuthStateChanged } from 'services/auth'
 
 export default function useUser () {
   const [user, setUser] = useState(undefined)
@@ -12,7 +12,7 @@ export default function useUser () {
   }, [])
 
   useEffect(() => {
-    user === null && router.push('/')
+    user === null && router.replace('/')
   }, [user])
 
   return user

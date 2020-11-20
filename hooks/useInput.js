@@ -4,7 +4,9 @@ export default function useInput (initialValue) {
   const [input, setInput] = useState(initialValue)
 
   function handleChange (e) {
-    setInput(e.target.value)
+    const { value } = e.target
+
+    setInput(value)
   }
 
   return [input, handleChange]

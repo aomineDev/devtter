@@ -1,12 +1,22 @@
 .btn {
+  min-width: 96px;
+  min-height: 33px;
   border-radius: 100px;
   padding: 8px 16px;
   font-weight: 700;
   font-size: 15px;
   transition: opacity .3s ease;
+  transition: .3s;
 }
 .btn:hover {
   opacity: .8;
+}
+.isDisabled,
+.isLoading {
+  pointer-events: none;
+}
+.btn.isDisabled {
+  background-color: var(--gray);
 }
 .btnWithIcon {
   display: flex;

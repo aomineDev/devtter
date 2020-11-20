@@ -22,6 +22,12 @@ button {
 input,
 textarea {
   font-family: inherit;
+  color: inherit;
+}
+button,
+img {
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @media screen and (min-width: 426px) {

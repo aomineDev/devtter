@@ -1,25 +1,30 @@
-import { useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import { loginWithGitHub } from 'utils/firebase/client'
+import { loginWithGitHub } from 'services/auth'
 import useUser from 'hooks/useUser'
 
 import Head from 'next/head'
 import Image from 'next/image'
-import Button from 'components/shared/Button'
+
 import SpinnerLoader from 'components/shared/SpinnerLoader'
+import Button from 'components/shared/Button'
 
 import styles from 'styles/login.module.css'
 
 export default function Login () {
+  const [isLoading, setIsLoading] = useState(false)
+
   const user = useUser()
   const router = useRouter()
 
   useEffect(() => {
-    user && router.push('/home')
+    user && router.replace('/home')
   }, [user])
 
-  function handleClick () {
+  function handleLogin () {
+    setIsLoading(true)
+
     loginWithGitHub()
       .catch(err => console.error(err))
   }
@@ -47,9 +52,10 @@ export default function Login () {
         {
           user === null
             ? <Button
-              styleCustome={styles.btn}
+              customeStyles={styles.btn}
               iconName='github'
-              onClick={handleClick}
+              handleCLick={handleLogin}
+              isLoading={isLoading}
             >
               Login with GitHub
             </Button>

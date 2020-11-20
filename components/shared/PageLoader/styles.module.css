@@ -1,5 +1,20 @@
 .pageLoader {
-  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
   display: grid;
   place-items: center;
+  background-color: var(--light);
+  z-index: 100;
+}
+.pageLoader > div {
+  animation: animation .75s infinite;
+}
+
+@keyframes animation {
+  50% {
+    transform: scale(.8);
+  }
 }

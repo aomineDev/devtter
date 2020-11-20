@@ -1,7 +1,7 @@
 .deveet {
   display: flex;
   padding: 10px 15px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid var(--gray);
 }
 .avatar {
   margin-right: 10px;

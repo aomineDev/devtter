@@ -2,17 +2,19 @@ import Avatar from '../shared/Avatar'
 
 import styles from './styles.module.css'
 
-export default function Deveet ({ username, avatar, message, id }) {
+export default function Deveet ({ displayName, avatar, content, id }) {
   return (
     <article className={styles.deveet}>
       <div className={styles.avatar}>
-        <Avatar
-          src={avatar}
-        />
+        <Avatar src={avatar} />
       </div>
       <section>
-        <p><strong>{username}</strong></p>
-        <p>{message}</p>
+        <p>
+          <strong>{displayName}</strong>
+        </p>
+        <p>
+          {content}
+        </p>
       </section>
     </article>
   )

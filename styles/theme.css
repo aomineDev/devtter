@@ -10,4 +10,7 @@
   --secondary: #1c5480;
   --light-primary: rgb(0, 153, 255, .3);
   --light-dark: rgb(33, 33, 33, .1);
+  --gray: #eee;
+  --grey: #ccc;
+  --red: #f44336;
 }
