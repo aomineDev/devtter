@@ -9,7 +9,7 @@ export default function Deveet ({ displayName, avatar, content, id }) {
         <Avatar src={avatar} />
       </div>
       <section>
-        <p>
+        <p className={styles.userName}>
           <strong>{displayName}</strong>
         </p>
         <p>

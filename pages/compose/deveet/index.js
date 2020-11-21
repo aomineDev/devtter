@@ -19,19 +19,18 @@ import styles from './styles.module.css'
 export default function DeveetForm () {
   const [isLoading, setIsLoading] = useState(false)
   const [isDisabled, setIsDisabled] = useState(true)
-  const [isInvalidLength, setIsInvalidLength] = useState(true)
+  const [lengthTrackerClassName, setLengthTrackerClassName] = useState('')
   const [isTextAreaDisabled, setIsTextAreaDisabled] = useState(false)
 
   const [input, handleChange] = useInput('')
   const user = useUser()
   const router = useRouter()
 
-  const lengthTrackerClassName = isInvalidLength ? styles.invalid : ''
   const lengthLimit = 300
 
   useEffect(() => {
-    if (input && input.length <= lengthLimit) handleToggleDisabled(false)
-    else handleToggleDisabled(true)
+    if (input && input.length <= lengthLimit) handleDisableElements(false)
+    else handleDisableElements(true)
   }, [input])
 
   function handleCreateDeveet () {
@@ -61,13 +60,15 @@ export default function DeveetForm () {
     if (e.key === 'Enter') handleCreateDeveet()
   }
 
-  function handleToggleDisabled (value) {
-    setIsDisabled(value)
-    setIsInvalidLength(value)
-  }
-
   function handleIconClick () {
     router.back()
+  }
+
+  function handleDisableElements (value) {
+    setIsDisabled(value)
+    setLengthTrackerClassName(value ? styles.invalid : '')
+
+    if (input.length === 0) setLengthTrackerClassName(styles.inactive)
   }
 
   if (!user) return <PageLoader />

@@ -1,0 +1,15 @@
+.noContent {
+  display: grid;
+  place-items: center;
+  place-content: center;
+  height: 100%;
+}
+.title {
+  margin-bottom: 10px;
+  font-size: 32px;
+  color: var(--grey);
+}
+.text {
+  font-size: 14px;
+  color: var(--grey);
+}

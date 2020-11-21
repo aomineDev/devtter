@@ -1,5 +1,6 @@
-import Deveet from '../Deveet'
 import DeveetMask from '../Deveet/mask'
+import NoContent from '../shared/NoContent'
+import Deveet from '../Deveet'
 
 export default function Timeline ({ timeline, isLoading }) {
   if (isLoading) {
@@ -10,15 +11,22 @@ export default function Timeline ({ timeline, isLoading }) {
     )
   }
 
+  if (!timeline.length) return <NoContent>Aún no hay deveets.</NoContent>
+
   return (
     <>
-      {timeline.map(({ id, displayName, avatar, content }) => (
+      {timeline.map(({ id, userId, avatar, displayName, content, commentsCount, likesCount, sharedCount, createdAt }) => (
         <Deveet
           key={id}
-          displayName={displayName}
-          avatar={avatar}
-          content={content}
           id={id}
+          userId={userId}
+          avatar={avatar}
+          displayName={displayName}
+          content={content}
+          commentsCount={commentsCount}
+          likesCount={likesCount}
+          sharedCount={sharedCount}
+          createdAt={createdAt}
         />
       ))}
     </>

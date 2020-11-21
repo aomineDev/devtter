@@ -11,8 +11,8 @@
 .btn:hover {
   opacity: .8;
 }
-.isDisabled,
-.isLoading {
+.btn.isDisabled,
+.btn.isLoading {
   pointer-events: none;
 }
 .btn.isDisabled {

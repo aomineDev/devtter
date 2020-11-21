@@ -39,6 +39,9 @@
   color: var(--primary);
   transition: .3s;
 }
+.lengthTracker.inactive {
+  color: var(--grey);
+}
 .lengthTracker.invalid {
   color: var(--red);
 }
