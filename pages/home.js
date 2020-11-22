@@ -40,7 +40,6 @@ export default function Home () {
     <>
       <Head>
         <title>Devtter - Inicio 🦇</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <Header />

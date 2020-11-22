@@ -4,13 +4,15 @@
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   
   /* Colors */
-  --dark: #000;
-  --light: #fff;
   --primary: #0099ff;
   --secondary: #1c5480;
-  --light-primary: rgb(0, 153, 255, .3);
-  --light-dark: rgb(33, 33, 33, .1);
+  --red: #f44336;
+  --dark: #000;
+  --light: #fff;
   --gray: #eee;
   --grey: #ccc;
-  --red: #f44336;
+  --light-primary: rgb(0, 153, 255, .3);
+  --light-secondary: rgba(0, 153, 255, .13);
+  --light-dark: rgb(33, 33, 33, .1);
+  --dark-primary: #6e767d;
 }

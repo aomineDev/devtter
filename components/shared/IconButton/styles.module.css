@@ -3,9 +3,11 @@
   width: 37px;
   height: 37px;
   border-radius: 50%;
-  transition: .3s;
   background-color: transparent;
+  transition: .3s;
 }
 .btn:hover {
-  background-color: var(--light-dark);
+  background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);
+  background-size: 180px 180px;
+  background-position: center;
 }

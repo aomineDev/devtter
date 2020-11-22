@@ -77,7 +77,6 @@ export default function DeveetForm () {
     <>
       <Head>
         <title>Publica un Deveet 🦇</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <HeaderLayout>

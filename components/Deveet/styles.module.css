@@ -9,3 +9,7 @@
 .userName {
   margin-bottom: 2.5px;
 }
+.timeAgo {
+  font-size: 14px;
+  color: var(--grey);
+}

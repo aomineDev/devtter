@@ -3,7 +3,7 @@ import Spinner from '../Spinner'
 
 import styles from './styles.module.css'
 
-export default function Button ({ children, customeStyles, iconName, isDisabled, isLoading, handleCLick }) {
+export default function Button ({ children, customeStyles, iconName, isDisabled, isLoading, handleClick }) {
   let className = `${customeStyles} ${styles.btn} ${iconName ? styles.btnWithIcon : ''}`
 
   if (isDisabled) className = `${className} ${styles.isDisabled}`
@@ -15,7 +15,7 @@ export default function Button ({ children, customeStyles, iconName, isDisabled,
       <button
         className={className}
         disabled={isDisabled}
-        onClick={handleCLick}
+        onClick={handleClick}
       >
         {
           isLoading
@@ -35,7 +35,7 @@ export default function Button ({ children, customeStyles, iconName, isDisabled,
     <button
       className={className}
       disabled={isDisabled}
-      onClick={handleCLick}
+      onClick={handleClick}
     >
       {
         isLoading

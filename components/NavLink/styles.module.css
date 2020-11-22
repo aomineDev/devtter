@@ -6,22 +6,28 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  opacity: .6;
+  opacity: .5;
   transition: .3s;
+  filter: grayscale(.8);
 }
 .link:hover {
-  background-color: var(--light-dark);
+  background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);
+  background-size: 180px 180px;
+  background-position: center;
+  filter: grayscale(0);
+  opacity: .8;
 }
-.active {
+.link.active {
+  filter: grayscale(0);
   opacity: 1;
 }
-.active::after {
+.link.active::after {
   content: '';
   position: absolute;
-  top: 6px;
-  right: 3px;
-  width: 8px;
-  height: 8px;
-  background-color: var(--dark);
+  top: 7px;
+  right: 7px;
+  width: 6px;
+  height: 6px;
+  background-color: var(--primary);
   border-radius: 50%;
 }

@@ -10,10 +10,13 @@ export function getDeveets () {
     .then(querySnapshot => {
       querySnapshot.forEach(doc => {
         const item = doc.data()
+        const { createdAt } = item
+        item.createdAt = +createdAt.toDate()
         item.id = doc.id
 
         response.push(item)
       })
+
       return response
     })
 }

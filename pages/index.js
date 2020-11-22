@@ -33,7 +33,6 @@ export default function Login () {
     <>
       <Head>
         <title>Devtter 🦇</title>
-        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <section className={styles.login}>
