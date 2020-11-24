@@ -1,13 +1,61 @@
 .btn {
   position: relative;
-  width: 37px;
-  height: 37px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 50%;
   background-color: transparent;
   transition: .3s;
 }
 .btn:hover {
-  background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);
   background-size: 180px 180px;
   background-position: center;
+}
+.btn.disabled {
+  pointer-events: none;
+}
+.btn.invert > div {
+  filter: invert(1);
+}
+.btn.bg-color-transparent {
+  background-color: transparent;
+}
+.btn.theme-transparent:hover {
+  background-image: transparent;
+}
+.btn.bg-color-primary {
+  background-color: var(--primary);
+}
+.btn.theme-primary:hover {
+  background-image: radial-gradient(var(--light-primary) 15%, transparent 16%);
+}
+.btn.bg-color-secondary {
+  background-color: var(--secondary);
+}
+.btn.theme-secondary:hover {
+  background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);
+}
+.btn.bg-color-red {
+  background-color: var(--red);
+}
+.btn.theme-red:hover {
+  background-image: radial-gradient(var(--light-red) 15%, transparent 16%);
+}
+.btn.bg-color-blue {
+  background-color: var(--blue);
+}
+.btn.theme-blue:hover {
+  background-image: radial-gradient(var(--light-blue) 15%, transparent 16%);
+}
+.btn.bg-color-green {
+  background-color: var(--green);
+}
+.btn.theme-green:hover {
+  background-image: radial-gradient(var(--light-green) 15%, transparent 16%);
+}
+.btn.bg-color-dark {
+  background-color: var(--dark);
+}
+.btn.theme-dark:hover {
+  background-image: radial-gradient(var(--light-dark) 15%, transparent 16%);
 }

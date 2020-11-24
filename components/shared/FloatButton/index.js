@@ -2,14 +2,20 @@ import Icon from '../Icon'
 
 import styles from './styles.module.css'
 
-export default function FloatButton ({ iconName, bgColor, handleCLick }) {
+export default function FloatButton ({ bgColor, iconName, iconWidth, iconHeight, handleCLick }) {
+  const finalBgColor = bgColor || 'transparent'
+  const className = `${styles.floatBtn} ${styles[finalBgColor]}`
+
   return (
     <button
-      className={styles.floatBtn}
-      style={{ backgroundColor: bgColor || 'black' }}
+      className={className}
       onClick={handleCLick}
     >
-      <Icon iconName={iconName} />
+      <Icon
+        iconName={iconName}
+        width={iconWidth}
+        height={iconHeight}
+      />
     </button>
   )
 }

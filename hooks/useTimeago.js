@@ -21,8 +21,7 @@ function getDateDiffs (timestamp) {
 }
 
 export default function useTimeago (timestamp) {
-  const initTime = getDateDiffs(timestamp)
-  const [timeago, setTimeago] = useState(initTime)
+  const [timeago, setTimeago] = useState(() => getDateDiffs(timestamp))
 
   useEffect(() => {
     if (timeago.unit !== 'second') return

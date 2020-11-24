@@ -6,26 +6,28 @@
   width: 42px;
   height: 42px;
   border-radius: 50%;
+  filter: grayscale(.8);
   opacity: .5;
   transition: .3s;
-  filter: grayscale(.8);
 }
 .link:hover {
   background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);
   background-size: 180px 180px;
   background-position: center;
-  filter: grayscale(0);
   opacity: .8;
 }
 .link.active {
-  filter: grayscale(0);
   opacity: 1;
+}
+.link:hover,
+.link.active {
+  filter: grayscale(0);
 }
 .link.active::after {
   content: '';
   position: absolute;
-  top: 7px;
-  right: 7px;
+  top: 8px;
+  right: 8px;
   width: 6px;
   height: 6px;
   background-color: var(--primary);

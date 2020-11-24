@@ -7,7 +7,7 @@ import useUser from 'hooks/useUser'
 import Head from 'next/head'
 import Image from 'next/image'
 
-import SpinnerLoader from 'components/shared/SpinnerLoader'
+import Loader from 'components/shared/Loader'
 import Button from 'components/shared/Button'
 
 import styles from 'styles/login.module.css'
@@ -53,12 +53,12 @@ export default function Login () {
             ? <Button
               customeStyles={styles.btn}
               iconName='github'
-              handleCLick={handleLogin}
+              handleClick={handleLogin}
               isLoading={isLoading}
             >
               Login with GitHub
             </Button>
-            : <SpinnerLoader />
+            : <Loader />
         }
       </section>
     </>

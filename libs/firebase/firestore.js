@@ -1,4 +1,4 @@
-import firebase from './index'
+import firebase from './client'
 
 const db = firebase.firestore()
 

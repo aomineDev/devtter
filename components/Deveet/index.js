@@ -1,10 +1,11 @@
 import useTimeago from 'hooks/useTimeago'
 
-import Avatar from '../shared/Avatar'
+import ImageCaption from '../ImageCaption'
+import Avatar from '../Avatar'
 
 import styles from './styles.module.css'
 
-export default function Deveet ({ id, userId, avatar, displayName, content, commentsCount, likesCount, sharedCount, createdAt }) {
+export default function Deveet ({ id, userId, avatar, displayName, content, imageUrl, commentsCount, likesCount, sharedCount, createdAt }) {
   const timeago = useTimeago(createdAt)
 
   return (
@@ -12,15 +13,17 @@ export default function Deveet ({ id, userId, avatar, displayName, content, comm
       <div className={styles.avatar}>
         <Avatar src={avatar} />
       </div>
-      <section>
+      <section className={styles.wrapper}>
         <p className={styles.userName}>
           <strong>{displayName}</strong>
-          <span> . </span>
-          <time className={styles.timeAgo}>{timeago}</time>
+          <time className={styles.timeAgo}> • {timeago}</time>
         </p>
-        <p>
+        <p className={styles.content}>
           {content}
         </p>
+        {
+          imageUrl && <ImageCaption src={imageUrl} />
+        }
       </section>
     </article>
   )

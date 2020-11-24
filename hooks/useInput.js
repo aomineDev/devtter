@@ -6,7 +6,7 @@ export default function useInput (initialValue) {
   function handleChange (e) {
     const { value } = e.target
 
-    setInput(value)
+    setInput(value.trim())
   }
 
   return [input, handleChange]

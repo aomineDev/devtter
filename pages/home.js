@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
-import useUser from 'hooks/useUser'
 import { getDeveets } from 'services/deveets'
+import useUser from 'hooks/useUser'
 
 import Head from 'next/head'
 
-import Header from 'layouts/Header'
-import Container from 'layouts/Container'
-import Navbar from 'layouts/Navbar'
+import AppLayout from 'layouts/AppLayout'
+
+import Container from 'components/layout/Container'
 
 import PageLoader from 'components/shared/PageLoader'
 import FloatButton from 'components/shared/FloatButton'
+
 import Timeline from 'components/Timeline'
 
 export default function Home () {
@@ -30,7 +31,7 @@ export default function Home () {
       })
   }, [])
 
-  function redirectTo () {
+  function handleNavigation () {
     router.push('/compose/deveet')
   }
 
@@ -39,19 +40,24 @@ export default function Home () {
   return (
     <>
       <Head>
-        <title>Devtter - Inicio 🦇</title>
+        <title>Inicio / Devtter 🦇</title>
       </Head>
 
-      <Header />
-      <Container>
-        <Timeline timeline={deveets} isLoading={isDeveetsLoading} />
-      </Container>
-      <FloatButton
-        iconName='feather'
-        bgColor='#0099ff'
-        handleCLick={redirectTo}
-      />
-      <Navbar />
+      <AppLayout
+        withHeader
+        withNavbar
+        title='Inicio'
+        avatar={user.avatar}
+      >
+        <Container>
+          <Timeline timeline={deveets} isLoading={isDeveetsLoading} />
+        </Container>
+        <FloatButton
+          bgColor='primary'
+          iconName='feather'
+          handleCLick={handleNavigation}
+        />
+      </AppLayout>
     </>
   )
 }

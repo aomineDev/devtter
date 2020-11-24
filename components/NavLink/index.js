@@ -5,7 +5,7 @@ import Link from 'next/link'
 
 import styles from './styles.module.css'
 
-export default function NavLink ({ href, iconName }) {
+export default function NavLink ({ href, iconName, iconWidth, iconHeight }) {
   const router = useRouter()
 
   let className = styles.link
@@ -15,7 +15,11 @@ export default function NavLink ({ href, iconName }) {
   return (
     <Link href={href}>
       <a className={className}>
-        <Icon iconName={iconName} />
+        <Icon
+          iconName={iconName}
+          width={iconWidth}
+          height={iconHeight}
+        />
       </a>
     </Link>
   )

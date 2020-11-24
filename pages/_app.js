@@ -1,5 +1,7 @@
-import AppLayout from 'layouts/App'
+import ContainerLayout from 'layouts/ContainerLayout'
+
 import Head from 'next/head'
+
 import 'styles/theme.css'
 import 'styles/globals.css'
 
@@ -11,9 +13,9 @@ export default function Devtter ({ Component, pageProps }) {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <AppLayout>
+      <ContainerLayout>
         <Component {...pageProps} />
-      </AppLayout>
+      </ContainerLayout>
     </>
   )
 }

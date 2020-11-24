@@ -1,18 +1,27 @@
 :root {
-  /* Fonts */
+  /* fonts */
   --fonts: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
   Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
   
-  /* Colors */
+  /* colors */
   --primary: #0099ff;
   --secondary: #1c5480;
   --red: #f44336;
+  --blue: #2196f3;
+  --green: #4caf50;
   --dark: #000;
   --light: #fff;
   --gray: #eee;
   --grey: #ccc;
-  --light-primary: rgb(0, 153, 255, .3);
-  --light-secondary: rgba(0, 153, 255, .13);
-  --light-dark: rgb(33, 33, 33, .1);
+
+  /* light */
+  --light-primary: rgba(0, 153, 255, .13);
+  --light-secondary: rgba(28, 84, 128, .13);
+  --light-red: rgba(244, 67, 54, .13);
+  --light-blue: rgba(33, 150, 243, .13);
+  --light-green: rgba(76, 175, 80, .13);
+  --light-dark: rgba(33, 33, 33, .13);
+
+  /* dark */
   --dark-primary: #6e767d;
 }

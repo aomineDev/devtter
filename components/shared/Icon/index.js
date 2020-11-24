@@ -1,11 +1,13 @@
 import Image from 'next/image'
 
-export default function Navbar ({ iconName, size }) {
+export default function Icon ({ iconName, width, height }) {
+  const defaultSize = '22'
+
   return (
     <Image
       src={`/icons/${iconName}.svg`}
-      width={size || 22}
-      height={size || 22}
+      width={width || defaultSize}
+      height={height || defaultSize}
       alt={iconName}
     />
   )

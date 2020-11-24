@@ -6,7 +6,7 @@
   width: 8em;
   height: 8em;
   border-radius: 50%;
-  background: linear-gradient(to right, var(--light) 10%, transparent 42%);
+  background-image: linear-gradient(to right, var(--light) 10%, transparent 42%);
   animation: load 1.4s infinite linear;
   transform: translateZ(0);
 }

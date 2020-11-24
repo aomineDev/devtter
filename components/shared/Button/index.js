@@ -4,43 +4,41 @@ import Spinner from '../Spinner'
 import styles from './styles.module.css'
 
 export default function Button ({ children, customeStyles, iconName, isDisabled, isLoading, handleClick }) {
-  let className = `${customeStyles} ${styles.btn} ${iconName ? styles.btnWithIcon : ''}`
+  const iconClassName = iconName ? styles.btnWithIcon : ''
+  const disabledClassName = isDisabled ? styles.isDisabled : ''
+  const loadingClassName = isLoading ? styles.isLoading : ''
 
-  if (isDisabled) className = `${className} ${styles.isDisabled}`
+  const btnClassName = `${customeStyles} ${styles.btn} ${iconClassName} ${disabledClassName} ${loadingClassName}`
 
-  if (isLoading) className = `${className} ${styles.isLoading}`
-
-  if (iconName) {
+  function BtnWithIcon () {
     return (
-      <button
-        className={className}
-        disabled={isDisabled}
-        onClick={handleClick}
-      >
-        {
-          isLoading
-            ? <Spinner customeStyles={customeStyles} />
-            : <>
-                <div className={styles.wrapper}>
-                  <Icon iconName={iconName} size='20' />
-                </div>
-                {children}
-              </>
-        }
-      </button>
+      <>
+        {iconName && (
+          <div className={styles.wrapper}>
+            <Icon
+              iconName={iconName}
+              width='20'
+              height='20'
+            />
+          </div>
+        )}
+      </>
     )
   }
 
   return (
     <button
-      className={className}
+      className={btnClassName}
       disabled={isDisabled}
       onClick={handleClick}
     >
       {
         isLoading
           ? <Spinner customeStyles={customeStyles} />
-          : children
+          : <>
+              <BtnWithIcon />
+              {children}
+            </>
       }
     </button>
   )

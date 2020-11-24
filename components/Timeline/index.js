@@ -15,7 +15,7 @@ export default function Timeline ({ timeline, isLoading }) {
 
   return (
     <>
-      {timeline.map(({ id, userId, avatar, displayName, content, commentsCount, likesCount, sharedCount, createdAt }) => (
+      {timeline.map(({ id, userId, avatar, displayName, content, imageUrl, commentsCount, likesCount, sharedCount, createdAt }) => (
         <Deveet
           key={id}
           id={id}
@@ -23,6 +23,7 @@ export default function Timeline ({ timeline, isLoading }) {
           avatar={avatar}
           displayName={displayName}
           content={content}
+          imageUrl={imageUrl}
           commentsCount={commentsCount}
           likesCount={likesCount}
           sharedCount={sharedCount}

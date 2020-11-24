@@ -1,4 +1,5 @@
 import firestore from 'libs/firebase/firestore'
+import { uploadImage } from 'libs/firebase/storage'
 
 const collection = 'deveets'
 
@@ -21,6 +22,10 @@ export function getDeveets () {
     })
 }
 
-export function createDeveet ({ deveet }) {
+export function createDeveet (deveet) {
   return firestore.create(collection, deveet)
+}
+
+export function uploadDeveetImage (file) {
+  return uploadImage(collection, file)
 }

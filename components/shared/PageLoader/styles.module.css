@@ -7,7 +7,7 @@
   display: grid;
   place-items: center;
   background-color: var(--light);
-  z-index: 100;
+  z-index: 110;
 }
 .pageLoader > div {
   animation: animation .75s infinite;

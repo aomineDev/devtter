@@ -1,4 +1,4 @@
-import firebase from 'libs/firebase'
+import firebase from 'libs/firebase/client'
 
 function mapUser (user) {
   const { displayName, email, photoURL: avatar, uid: id } = user

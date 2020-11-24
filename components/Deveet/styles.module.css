@@ -6,10 +6,18 @@
 .avatar {
   margin-right: 10px;
 }
+.wrapper {
+  overflow: hidden;
+}
 .userName {
   margin-bottom: 2.5px;
 }
 .timeAgo {
   font-size: 14px;
   color: var(--grey);
+}
+.content {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
 }

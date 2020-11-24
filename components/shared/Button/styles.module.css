@@ -5,7 +5,6 @@
   padding: 8px 16px;
   font-weight: 700;
   font-size: 15px;
-  transition: opacity .3s ease;
   transition: .3s;
 }
 .btn:hover {

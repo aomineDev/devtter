@@ -1,12 +1,14 @@
 import styles from './styles.module.css'
 
 export default function Avatar ({ size, ...props }) {
+  const defaultSize = size || '49'
+
   return (
     <img
       alt='avatar'
       className={styles.img}
-      width={size || '49'}
-      height={size || '49'}
+      width={defaultSize}
+      height={defaultSize}
       {...props}
     />
   )
