@@ -2,6 +2,8 @@ import ContainerLayout from 'layouts/ContainerLayout'
 
 import Head from 'next/head'
 
+import AppLayout from 'layouts/AppLayout'
+
 import 'styles/theme.css'
 import 'styles/globals.css'
 
@@ -14,7 +16,9 @@ export default function Devtter ({ Component, pageProps }) {
       </Head>
 
       <ContainerLayout>
-        <Component {...pageProps} />
+        <AppLayout>
+          <Component {...pageProps} />
+        </AppLayout>
       </ContainerLayout>
     </>
   )

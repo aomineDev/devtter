@@ -22,8 +22,8 @@
   margin-right: 10px;
 }
 .avatar {
-  width: 49px;
-  height: 49px;
+  width: var(--size-component);
+  height: var(--size-component);
   border-radius: 50%;
   background-color: var(--gray);
 }

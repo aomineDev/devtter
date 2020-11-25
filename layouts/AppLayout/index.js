@@ -1,22 +1,44 @@
+// libs
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
+
+import routes from 'router/index'
+
+// hooks
+import useUser from 'hooks/useUser'
+
+// components
 import Header from 'components/layout/Header'
 import Navbar from 'components/layout/Navbar'
 
-export default function AppLayout ({ children, withHeader, withNavbar, title, avatar, isNavigable, headerChildren }) {
+import PageLoader from 'components/shared/PageLoader'
+
+export default function AppLayout ({ children }) {
+  const [withHUD, setWithHUD] = useState(false)
+  const [title, setTitle] = useState(false)
+
+  const user = useUser(true)
+  const router = useRouter()
+
+  useEffect(() => {
+    setWithHUD(false)
+    routes.forEach(route => {
+      if (router.pathname === route.path) {
+        setWithHUD(true)
+        setTitle(route.title)
+      }
+    })
+  }, [router.pathname])
+
+  if (user === undefined) return <PageLoader />
+
+  if (user === null) return children
+
   return (
     <>
-      {
-        withHeader && (
-          <Header
-            title={title}
-            avatar={avatar}
-            isNavigable={isNavigable}
-          >
-            {headerChildren}
-          </Header>
-        )
-      }
-      {children}
-      { withNavbar && <Navbar /> }
+      { withHUD && <Header title={title} avatar={user.avatar} /> }
+        {children}
+      { withHUD && <Navbar /> }
     </>
   )
 }

@@ -1,9 +1,9 @@
 .floatBtn {
   position: absolute;
-  bottom: calc(49px + 15px);
+  bottom: calc(var(--size-hud) + 15px);
   right: 15px;
-  width: 49px;
-  height: 49px;
+  width: var(--size-component);
+  height: var(--size-component);
   border-radius: 50%;
   z-index: 90;
 }

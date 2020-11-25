@@ -1,14 +1,11 @@
 import firebase from 'libs/firebase/client'
 
-function mapUser (user) {
-  const { displayName, email, photoURL: avatar, uid: id } = user
+export function loginWithGitHub () {
+  const githubProvider = new firebase.auth.GithubAuthProvider()
 
-  return {
-    id,
-    email,
-    avatar,
-    displayName
-  }
+  return firebase
+    .auth()
+    .signInWithPopup(githubProvider)
 }
 
 export function onAuthStateChanged (onChange) {
@@ -21,10 +18,13 @@ export function onAuthStateChanged (onChange) {
     })
 }
 
-export function loginWithGitHub () {
-  const githubProvider = new firebase.auth.GithubAuthProvider()
+function mapUser (user) {
+  const { displayName, email, photoURL: avatar, uid: id } = user
 
-  return firebase
-    .auth()
-    .signInWithPopup(githubProvider)
+  return {
+    id,
+    email,
+    avatar,
+    displayName
+  }
 }

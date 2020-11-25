@@ -3,7 +3,7 @@
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 49px;
+  height: var(--size-hud);
   border-top: 1px solid var(--gray);
   display: flex;
   justify-content: space-around;

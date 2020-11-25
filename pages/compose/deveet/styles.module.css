@@ -3,91 +3,10 @@
   color: var(--light);
 }
 .wrapper {
-  margin-top: 49px;
+  margin-top: var(--size-hud);
   display: flex;
   padding: 10px 15px;
 }
 .avatar {
   margin-right: 10px;
-}
-.form {
-  width: 100%;
-}
-.textareaWrapper {
-  position: relative;
-}
-.textarea {
-  padding: 5px;
-  width: 100%;
-  height: 200px;
-  border: 2px solid transparent;
-  border-bottom: 1px solid var(--gray);
-  font-size: 19px;
-  resize: none;
-}
-.textarea[disabled] {
-  background-color: transparent;
-  opacity: .5;
-}
-.textarea::-webkit-scrollbar {
-  width: 5px;
-}
-.textarea::-webkit-scrollbar-track {
-  background-color: transparent;
-}
-.textarea::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, .1);
-}
-.textarea.drag {
-  border-radius: 8px;
-  border: 2px dashed var(--primary);
-}
-.dragImg {
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  filter: grayscale(.8);
-  opacity: 0;
-  visibility: none;
-}
-.textarea.drag + .dragImg {
-  opacity: .3;
-  visibility: visible;
-}
-.fileLabel {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 37px;
-  height: 37px;
-  border-radius: 50%;
-  background-color: transparent;
-  transition: .3s;
-}
-.fileLabel:hover {
-  background-image: radial-gradient(var(--light-primary) 15%, transparent 16%);
-  background-size: 180px 180px;
-  background-position: center;
-}
-.fileInput {
-  display: none;
-}
-.formDetails {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 10px;
-}
-.lengthTracker {
-  color: var(--primary);
-  transition: .3s;
-}
-.lengthTracker.inactive {
-  color: var(--grey);
-}
-.lengthTracker.invalid {
-  color: var(--red);
 }

@@ -7,8 +7,9 @@
   position: relative;
   height: 100vh;
   width: 100%;
-  max-width: 425px;
+  max-width: var(--width-app);
   background-color: var(--light);
+  overflow: hidden;
 }
 
 @media screen and (min-width: 426px) {
@@ -16,6 +17,5 @@
     height: 90vh;
     border-radius: 24px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, .1);
-    overflow: hidden;
   }
 }

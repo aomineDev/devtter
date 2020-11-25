@@ -1,8 +1,4 @@
 :root {
-  /* fonts */
-  --fonts: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-  Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  
   /* colors */
   --primary: #0099ff;
   --secondary: #1c5480;
@@ -24,4 +20,12 @@
 
   /* dark */
   --dark-primary: #6e767d;
+
+  /* fonts */
+  --fonts: system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+
+  /* layout */
+  --width-app: 425px;
+  --size-hud: 49px;
+  --size-component: 49px;
 }

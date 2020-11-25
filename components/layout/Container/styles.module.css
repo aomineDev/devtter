@@ -1,7 +1,7 @@
 .container {
-  margin-top: 49px;
+  margin-top: var(--size-hud);
   overflow-y: auto;
-  height: calc(100% - 98px);
+  height: calc(100% - (var(--size-hud) * 2));
 }
 .container::-webkit-scrollbar {
   width: 5px;
