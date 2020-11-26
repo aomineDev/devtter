@@ -1,4 +1,6 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+
+import useInput from 'hooks/useInput'
 
 import Icon from 'components/shared/Icon'
 import ImageCaption from 'components/ImageCaption'
@@ -6,21 +8,33 @@ import ImageCaption from 'components/ImageCaption'
 import styles from './styles.module.css'
 
 export default function textarea ({
-  input,
-  image,
-  lengthLimit,
-  setImage,
   setFile,
+  setInput,
   setIsSubmitDisabled,
   handleSubmit,
-  handleChange,
   isTextAreaDisabled,
-  isBtnCloseImgDisabled,
-  lengthTrackerClassName
+  isBtnCloseImgDisabled
 }) {
-  const [isImageCaptionActive, setIsImageCaptionActive] = useState(false)
-
+  // hooks
+  const [lengthTrackerClassName, setLengthTrackerClassName] = useState('')
   const [dragClassName, setDragClassname] = useState('')
+
+  const [image, setImage] = useState(null)
+
+  // custom hooks
+  const [input, handleChange] = useInput('')
+
+  // constnts
+  const lengthLimit = 300
+
+  // effects
+  useEffect(() => {
+    setInput(input)
+    if (input && input.length <= lengthLimit) handleInvalidLength(false)
+    else handleInvalidLength(true)
+
+    if (image && input.length <= lengthLimit) setIsSubmitDisabled(false)
+  }, [input])
 
   // handle img
   function handleImage (file) {
@@ -28,16 +42,16 @@ export default function textarea ({
 
     setImage(objectURL)
     setFile(file)
+
     input.length <= lengthLimit && setIsSubmitDisabled(false)
-    setIsImageCaptionActive(true)
   }
 
   function handleCloseImg (e) {
     e.preventDefault()
     setImage(null)
     setFile(null)
+
     !input && setIsSubmitDisabled(true)
-    setIsImageCaptionActive(false)
   }
 
   function handleFileInput (e) {
@@ -74,6 +88,14 @@ export default function textarea ({
     }
   }
 
+  // handle invalid length
+  function handleInvalidLength (value) {
+    setIsSubmitDisabled(value)
+    setLengthTrackerClassName(value ? styles.invalid : '')
+
+    if (input.length === 0) setLengthTrackerClassName(styles.inactive)
+  }
+
   return (
     <form className={styles.form}>
           <div className={styles.textareaWrapper}>
@@ -97,7 +119,7 @@ export default function textarea ({
             </div>
           </div>
           {
-            isImageCaptionActive && (
+            image && (
               <ImageCaption
                 src={image}
                 withBtnCloseImg
@@ -122,7 +144,7 @@ export default function textarea ({
                 onChange={handleFileInput}
               />
             </div>
-            <p className={`${styles.lengthTracker} ${styles[lengthTrackerClassName]}`}>
+            <p className={`${styles.lengthTracker} ${lengthTrackerClassName}`}>
               {input.length}/{lengthLimit}
             </p>
           </div>

@@ -5,7 +5,7 @@ const routes = [
   },
   {
     path: '/search',
-    title: ''
+    title: 'Buscar'
   },
   {
     path: '/notifications',

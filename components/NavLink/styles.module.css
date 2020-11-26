@@ -9,6 +9,8 @@
   filter: grayscale(.8);
   opacity: .5;
   transition: .3s;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
 }
 .link:hover {
   background-image: radial-gradient(var(--light-secondary) 15%, transparent 16%);

@@ -1,5 +1,5 @@
 // libs
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 
 // services
@@ -7,7 +7,6 @@ import { createDeveet, uploadDeveetImage } from 'services/deveets'
 
 // hooks
 import useUser from 'hooks/useUser'
-import useInput from 'hooks/useInput'
 
 // components
 import Head from 'next/head'
@@ -30,32 +29,16 @@ export default function ComposeDeveet () {
   const [isBtnDisabled, setIsBtnDisabled] = useState(true)
   const [isBtnLoading, setIsBtnLoading] = useState(false)
 
-  const [lengthTrackerClassName, setLengthTrackerClassName] = useState('')
-
-  const [image, setImage] = useState(null)
+  const [content, setContent] = useState('')
   const [file, setFile] = useState(null)
 
   // custom hooks
-  const [input, handleChange] = useInput('')
   const user = useUser()
   const router = useRouter()
-
-  // constans
-  const lengthLimit = 300
-
-  // effects
-  useEffect(() => {
-    if (input && input.length <= lengthLimit) handleInvalidLength(false)
-    else handleInvalidLength(true)
-
-    if (image && input.length <= lengthLimit) setIsBtnDisabled(false)
-  }, [input])
 
   // handle upload image
   async function handleUploadImage () {
     if (!file) return null
-
-    setIsBtnCloseImgDisabled(true)
 
     const snapshot = await uploadDeveetImage(file)
 
@@ -75,7 +58,7 @@ export default function ComposeDeveet () {
         avatar: user.avatar,
         displayName: user.displayName,
         userId: user.id,
-        content: input,
+        content,
         imageUrl,
         likesCount: 0,
         sharedCount: 0,
@@ -83,25 +66,18 @@ export default function ComposeDeveet () {
       }
 
       await createDeveet(deveet)
+
       router.push('/home')
     } catch (error) {
       console.error('Error adding document: ', error)
       handleAwaitCreate(false)
-      setIsBtnCloseImgDisabled(false)
     }
   }
 
   function handleAwaitCreate (value) {
     setIsBtnLoading(value)
     setIsTextAreaDisabled(value)
-  }
-
-  // handle invalid length
-  function handleInvalidLength (value) {
-    setIsBtnDisabled(value)
-    setLengthTrackerClassName(value ? 'invalid' : '')
-
-    if (input.length === 0) setLengthTrackerClassName('inactive')
+    setIsBtnCloseImgDisabled(value)
   }
 
   // await user
@@ -129,17 +105,12 @@ export default function ComposeDeveet () {
           <Avatar src={user.avatar} />
         </div>
         <Textarea
-          input={input}
-          image={image}
-          lengthLimit={lengthLimit}
-          setImage={setImage}
           setFile={setFile}
+          setInput={setContent}
           setIsSubmitDisabled={setIsBtnDisabled}
           handleSubmit={handleCreateDeveet}
-          handleChange={handleChange}
           isTextAreaDisabled={isTextAreaDisabled}
           isBtnCloseImgDisabled={isBtnCloseImgDisabled}
-          lengthTrackerClassName={lengthTrackerClassName}
         />
       </section>
     </>
