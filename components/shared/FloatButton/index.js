@@ -4,11 +4,11 @@ import styles from './styles.module.css'
 
 export default function FloatButton ({ bgColor, iconName, iconWidth, iconHeight, handleCLick }) {
   const finalBgColor = bgColor || 'transparent'
-  const className = `${styles.floatBtn} ${styles[finalBgColor]}`
+  const btnClassName = `${styles.floatBtn} ${styles[finalBgColor]}`
 
   return (
     <button
-      className={className}
+      className={btnClassName}
       onClick={handleCLick}
     >
       <Icon
