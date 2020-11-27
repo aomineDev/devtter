@@ -3,10 +3,9 @@
   color: var(--light);
 }
 .wrapper {
-  margin-top: var(--size-hud);
   display: flex;
   padding: 10px 15px;
 }
-.avatar {
+.avatarWrapper {
   margin-right: 10px;
 }

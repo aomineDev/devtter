@@ -98,56 +98,52 @@ export default function textarea ({
 
   return (
     <form className={styles.form}>
-          <div className={styles.textareaWrapper}>
-            <textarea
-              placeholder="¿Qué esta pasando?"
-              className={`${styles.textarea} ${dragClassName}`}
-              disabled={isTextAreaDisabled}
-              onChange={handleChange}
-              onKeyPress={handleKeyPress}
-              onDragEnter={handleDragEnter}
-              onDragLeave={handleDragLeave}
-              onDrop={handleDrop}
-            >
-            </textarea>
-            <div className={styles.dragImg}>
-              <Icon
-                iconName='file-image'
-                width='60'
-                height='80'
-              />
-            </div>
-          </div>
-          {
-            image && (
-              <ImageCaption
-                src={image}
-                withBtnCloseImg
-                isBtnCloseImgDisabled={isBtnCloseImgDisabled}
-                handleCloseImg={handleCloseImg}
-              />
-            )
-          }
-          <div className={styles.formDetails}>
-            <div className={styles.formBtns}>
-              <label htmlFor='file-img' className={styles.fileLabel}>
-                <Icon
-                  iconName='file-image'
-                  width='18'
-                  height='24'
-                />
-              </label>
-              <input
-                type='file'
-                id='file-img'
-                className={styles.fileInput}
-                onChange={handleFileInput}
-              />
-            </div>
-            <p className={`${styles.lengthTracker} ${lengthTrackerClassName}`}>
-              {input.length}/{lengthLimit}
-            </p>
-          </div>
-        </form>
+      <div className={styles.textareaWrapper}>
+        <textarea
+          placeholder="¿Qué esta pasando?"
+          className={`${styles.textarea} ${dragClassName}`}
+          disabled={isTextAreaDisabled}
+          onChange={handleChange}
+          onKeyPress={handleKeyPress}
+          onDragEnter={handleDragEnter}
+          onDragLeave={handleDragLeave}
+          onDrop={handleDrop}
+        >
+        </textarea>
+        <div className={styles.dragImg}>
+          <Icon
+            iconName='file-image'
+            width='60'
+            height='80'
+          />
+        </div>
+      </div>
+      <ImageCaption
+        src={image}
+        withBtnCloseImg
+        isBtnCloseImgDisabled={isBtnCloseImgDisabled}
+        handleCloseImg={handleCloseImg}
+      />
+      <div className={styles.formDetails}>
+        <div className={styles.formBtns}>
+          <label htmlFor='file-img' className={styles.fileLabel}>
+            <Icon
+              iconName='file-image'
+              width='18'
+              height='24'
+            />
+          </label>
+          <input
+            type='file'
+            id='file-img'
+            className={styles.fileInput}
+            onChange={handleFileInput}
+          />
+        </div>
+        <p className={`${styles.lengthTracker} ${lengthTrackerClassName}`}>
+          {input.length}/{lengthLimit}
+        </p>
+      </div>
+    </form>
   )
 }

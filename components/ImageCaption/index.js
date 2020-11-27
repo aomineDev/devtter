@@ -3,6 +3,8 @@ import IconButton from '../shared/IconButton'
 import styles from './styles.module.css'
 
 export default function ImageCaption ({ src, withBtnCloseImg, isBtnCloseImgDisabled, handleCloseImg }) {
+  if (!src) return false
+
   return (
     <div className={styles.imgWrapper}>
       <img

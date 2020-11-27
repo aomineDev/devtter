@@ -1,0 +1,6 @@
+.avatar {
+  width: var(--size-component);
+  height: var(--size-component);
+  border-radius: 50%;
+  background-color: var(--gray);
+}

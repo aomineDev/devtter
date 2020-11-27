@@ -1,12 +1,11 @@
-.deveet {
+.wrapper {
   position: relative;
   display: flex;
   padding: 10px 15px;
-  border-bottom: 1px solid var(--gray);
   animation: animate 3s infinite;
   overflow: hidden;
 }
-.deveet::before {
+.wrapper::before {
   content: '';
   position: absolute;
   top: 0;
@@ -20,37 +19,11 @@
 .avatarWrapper {
   margin-right: 10px;
 }
-.contentWrapper {
+.textarea {
   width: 100%;
-}
-.userName {
-  width: 40%;
-  height: 21px;
-}
-.content {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  height: 63px;
-}
-.userName,
-.content {
+  height: 200px;
   border-radius: 10.5px;
   background-color: var(--gray);
-}
-.interactionCount {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-  margin-left: auto;
-  margin-right: auto;
-}
-.commentsCount,
-.sharedCount,
-.likesCount {
-  width: 20px;
-  height: 20px;
-  background-color: var(--gray);
-  border-radius: 50%;
 }
 
 @keyframes mask {

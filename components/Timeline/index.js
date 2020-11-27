@@ -3,13 +3,7 @@ import NoContent from '../shared/NoContent'
 import Deveet from '../Deveet'
 
 export default function Timeline ({ timeline, isLoading }) {
-  if (isLoading) {
-    return (
-      <>
-        {[1, 2, 3].map(e => <DeveetMask key={e} />)}
-      </>
-    )
-  }
+  if (isLoading) return <> {[1, 2, 3].map(e => <DeveetMask key={e} />)} </>
 
   if (!timeline.length) return <NoContent>Aún no hay deveets.</NoContent>
 

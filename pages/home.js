@@ -43,7 +43,7 @@ export default function Home () {
         <title>Inicio / Devtter 🦇</title>
       </Head>
 
-      <Container>
+      <Container withScroll>
         <Timeline timeline={deveets} isLoading={isDeveetsLoading} />
       </Container>
       <FloatButton

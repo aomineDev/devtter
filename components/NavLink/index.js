@@ -8,9 +8,9 @@ import styles from './styles.module.css'
 export default function NavLink ({ href, iconName, iconWidth, iconHeight }) {
   const router = useRouter()
 
-  let className = styles.link
+  let className = `${styles.link} `
 
-  if (router.pathname === href) className = `${className} ${styles.active}`
+  if (router.pathname === href) className += styles.active
 
   return (
     <Link href={href}>

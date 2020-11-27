@@ -12,12 +12,14 @@ import useUser from 'hooks/useUser'
 import Head from 'next/head'
 
 import InnerHeader from 'components/layout/InnerHeader'
+import Container from 'components/layout/Container'
 
-import PageLoader from 'components/shared/PageLoader'
 import Button from 'components/shared/Button'
 
-import Avatar from 'components/Avatar'
 import Textarea from 'components/Textarea'
+import Avatar from 'components/Avatar'
+
+import ComposeDeveetMask from './mask'
 
 // styles
 import styles from './styles.module.css'
@@ -80,8 +82,7 @@ export default function ComposeDeveet () {
     setIsBtnCloseImgDisabled(value)
   }
 
-  // await user
-  if (!user) return <PageLoader />
+  if (!user) return <ComposeDeveetMask />
 
   return (
     <>
@@ -100,19 +101,21 @@ export default function ComposeDeveet () {
         </Button>
       </InnerHeader>
 
-      <section className={styles.wrapper}>
-        <div className={styles.avatar}>
-          <Avatar src={user.avatar} />
+      <Container>
+        <div className={styles.wrapper}>
+          <div className={styles.avatarWrapper}>
+            <Avatar src={user.avatar} />
+          </div>
+          <Textarea
+            setFile={setFile}
+            setInput={setContent}
+            setIsSubmitDisabled={setIsBtnDisabled}
+            handleSubmit={handleCreateDeveet}
+            isTextAreaDisabled={isTextAreaDisabled}
+            isBtnCloseImgDisabled={isBtnCloseImgDisabled}
+          />
         </div>
-        <Textarea
-          setFile={setFile}
-          setInput={setContent}
-          setIsSubmitDisabled={setIsBtnDisabled}
-          handleSubmit={handleCreateDeveet}
-          isTextAreaDisabled={isTextAreaDisabled}
-          isBtnCloseImgDisabled={isBtnCloseImgDisabled}
-        />
-      </section>
+      </Container>
     </>
   )
 }

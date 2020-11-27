@@ -21,9 +21,7 @@ export default function Deveet ({ id, userId, avatar, displayName, content, imag
         <p className={styles.content}>
           {content}
         </p>
-        {
-          imageUrl && <ImageCaption src={imageUrl} />
-        }
+        <ImageCaption src={imageUrl} />
       </section>
     </article>
   )

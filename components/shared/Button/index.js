@@ -4,11 +4,13 @@ import Spinner from '../Spinner'
 import styles from './styles.module.css'
 
 export default function Button ({ children, customeStyles, iconName, isDisabled, isLoading, handleClick }) {
-  const iconClassName = iconName ? styles.btnWithIcon : ''
-  const disabledClassName = isDisabled ? styles.isDisabled : ''
-  const loadingClassName = isLoading ? styles.isLoading : ''
+  let btnClassName = `${customeStyles} ${styles.btn} `
 
-  const btnClassName = `${customeStyles} ${styles.btn} ${iconClassName} ${disabledClassName} ${loadingClassName}`
+  if (iconName) btnClassName += styles.btnWithIcon
+
+  if (isDisabled) btnClassName += styles.isDisabled
+
+  if (isLoading) btnClassName += styles.isLoading
 
   function BtnWithIcon () {
     return (
