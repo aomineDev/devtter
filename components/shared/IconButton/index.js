@@ -5,7 +5,7 @@ import styles from './styles.module.css'
 export default function IconButton ({ iconName, btnSize, iconWidth, iconHeight, isIconInvert, bgColor, theme, isDisabled, handleClick }) {
   let btnClassName = `${styles.btn} `
 
-  if (isDisabled) btnClassName += styles.disabled
+  if (isDisabled) btnClassName += `${styles.disabled} `
 
   if (isIconInvert) btnClassName += styles.invert
 

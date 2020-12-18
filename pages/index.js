@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import { useRouter } from 'next/router'
 
 import useUser from 'hooks/useUser'
 import { loginWithGitHub } from 'services/auth'
@@ -16,13 +15,10 @@ export default function Login () {
   const [isLoading, setIsLoading] = useState(false)
   const user = useUser()
 
-  const router = useRouter()
-
   function handleLogin () {
     setIsLoading(true)
 
     loginWithGitHub()
-      .then(() => router.push('/home'))
       .catch(error => {
         console.error(error)
         setIsLoading(false)

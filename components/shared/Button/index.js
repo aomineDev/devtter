@@ -6,9 +6,9 @@ import styles from './styles.module.css'
 export default function Button ({ children, customeStyles, iconName, isDisabled, isLoading, handleClick }) {
   let btnClassName = `${customeStyles} ${styles.btn} `
 
-  if (iconName) btnClassName += styles.btnWithIcon
+  if (iconName) btnClassName += `${styles.btnWithIcon} `
 
-  if (isDisabled) btnClassName += styles.isDisabled
+  if (isDisabled) btnClassName += `${styles.isDisabled} `
 
   if (isLoading) btnClassName += styles.isLoading
 

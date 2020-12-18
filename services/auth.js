@@ -8,6 +8,10 @@ export function loginWithGitHub () {
     .signInWithPopup(githubProvider)
 }
 
+export function signOut () {
+  firebase.auth().signOut()
+}
+
 export function onAuthStateChanged (onChange) {
   firebase
     .auth()
