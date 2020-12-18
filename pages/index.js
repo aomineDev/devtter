@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 import useUser from 'hooks/useUser'
-import { loginWithGitHub } from 'services/auth'
+import { signInWithGitHub } from 'services/auth'
 
 import Head from 'next/head'
 import Image from 'next/image'
@@ -18,7 +18,7 @@ export default function Login () {
   function handleLogin () {
     setIsLoading(true)
 
-    loginWithGitHub()
+    signInWithGitHub()
       .catch(error => {
         console.error(error)
         setIsLoading(false)

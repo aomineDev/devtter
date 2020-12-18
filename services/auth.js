@@ -1,6 +1,6 @@
 import firebase from 'libs/firebase/client'
 
-export function loginWithGitHub () {
+export function signInWithGitHub () {
   const githubProvider = new firebase.auth.GithubAuthProvider()
 
   return firebase
