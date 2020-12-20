@@ -1,4 +1,9 @@
+import { useRouter } from 'next/router'
+
 import useTimeago from 'hooks/useTimeago'
+import formatDate from 'utils/formatDate'
+
+import Link from 'next/link'
 
 import ImageCaption from '../ImageCaption'
 import Avatar from '../Avatar'
@@ -6,17 +11,28 @@ import Avatar from '../Avatar'
 import styles from './styles.module.css'
 
 export default function Deveet ({ id, userId, avatar, displayName, content, imageUrl, commentsCount, likesCount, sharedCount, createdAt }) {
+  const router = useRouter()
+
   const timeago = useTimeago(createdAt)
+  const date = formatDate(createdAt)
+
+  function handleArticleClick () {
+    router.push(`/status/${id}`)
+  }
 
   return (
-    <article className={styles.deveet}>
+    <article className={styles.deveet} onClick={handleArticleClick}>
       <div className={styles.avatar}>
         <Avatar src={avatar} />
       </div>
       <section className={styles.wrapper}>
         <p className={styles.userName}>
           <strong>{displayName}</strong>
-          <time className={styles.timeAgo}> • {timeago}</time>
+          <Link href={`/status/${id}`}>
+            <a>
+              <time className={styles.timeAgo} title={date}> • {timeago}</time>
+            </a>
+          </Link>
         </p>
         <p className={styles.content}>
           {content}

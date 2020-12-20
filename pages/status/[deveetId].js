@@ -16,3 +16,9 @@ export default function DeveetStatus () {
     </>
   )
 }
+
+DeveetStatus.getInitialProps = context => {
+  console.log('getInitialProps')
+
+  return {}
+}

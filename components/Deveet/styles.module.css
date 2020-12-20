@@ -2,11 +2,17 @@
   display: flex;
   padding: 10px 15px;
   border-bottom: 1px solid var(--gray);
+  cursor: pointer;
+  transition: .3s;
+}
+.deveet:hover {
+  background-color: #f5f8fa;
 }
 .avatar {
   margin-right: 10px;
 }
 .wrapper {
+  width: 100%;
   overflow: hidden;
 }
 .userName {
