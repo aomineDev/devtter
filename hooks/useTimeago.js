@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 const dateUnits = [
-  { unit: 'day', value: 86400 },
-  { unit: 'hour', value: 3600 },
-  { unit: 'minute', value: 60 },
-  { unit: 'second', value: 1 }
+  { unit: 'd', value: 86400 },
+  { unit: 'h', value: 3600 },
+  { unit: 'min', value: 60 },
+  { unit: 's', value: 1 }
 ]
 
 function getDateDiffs (timestamp) {
@@ -12,8 +12,9 @@ function getDateDiffs (timestamp) {
   const elapsed = (now - timestamp) / 1000
 
   for (const { unit, value } of dateUnits) {
-    if (elapsed > value || unit === 'second') {
-      const time = Math.floor(elapsed / value) * -1
+    if (elapsed > value || unit === 's') {
+      const time = Math.floor(elapsed / value)
+      // const time = Math.floor(elapsed / value) * -1
 
       return { time, unit }
     }
@@ -24,23 +25,24 @@ export default function useTimeago (timestamp) {
   const [timeago, setTimeago] = useState(() => getDateDiffs(timestamp))
 
   useEffect(() => {
-    if (timeago.unit !== 'second') return
+    if (timeago.unit !== 's') return
 
     const interval = setInterval(() => {
       const newTimeago = getDateDiffs(timestamp)
       setTimeago(newTimeago)
 
-      if (newTimeago.unit !== 'second') clearInterval(interval)
+      if (newTimeago.unit !== 's') clearInterval(interval)
     }, 1000)
 
     return () => clearInterval(interval)
   }, [])
 
-  const language = navigator.language || navigator.userLanguage
+  // const language = navigator.language || navigator.userLanguage
 
-  const rtf = new Intl.RelativeTimeFormat(language, { style: 'short' })
+  // const rtf = new Intl.RelativeTimeFormat(language, { style: 'narrow' })
 
   const { time, unit } = timeago
 
-  return rtf.format(time, unit)
+  return time + unit
+  // return rtf.format(time, unit)
 }

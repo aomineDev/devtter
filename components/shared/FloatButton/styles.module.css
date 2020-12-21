@@ -1,7 +1,7 @@
 .floatBtn {
   position: absolute;
   bottom: calc(var(--size-hud) + 15px);
-  right: 15px;
+  right: var(--padding-app-x);
   width: var(--size-component);
   height: var(--size-component);
   border-radius: 50%;

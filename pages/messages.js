@@ -1,6 +1,6 @@
 import Head from 'next/head'
 
-import NoContent from 'components/shared/NoContent'
+import NoContent from 'components/NoContent'
 
 export default function Messages () {
   return (

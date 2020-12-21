@@ -11,6 +11,9 @@ export default (req, res) => {
       if (!doc.exists) return res.status(404).end()
 
       const data = doc.data()
+      data.id = doc.id
+      data.createdAt = +data.createdAt.toDate()
+
       res.status(200).json({
         data,
         message: 'deveet listed'

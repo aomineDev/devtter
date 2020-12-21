@@ -1,5 +1,5 @@
 import DeveetMask from '../Deveet/mask'
-import NoContent from '../shared/NoContent'
+import NoContent from '../NoContent'
 import Deveet from '../Deveet'
 
 export default function Timeline ({ timeline, isLoading }) {

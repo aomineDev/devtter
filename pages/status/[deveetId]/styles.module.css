@@ -1,0 +1,28 @@
+.deveet {
+  padding: var(--padding-app-y) var(--padding-app-x);
+}
+.user {
+  display: flex;
+  align-items: center;
+}
+.nameWrapper {
+  margin-left: 10px;
+}
+.displayName {
+  font-weight: 700;
+}
+.userName {
+  color: var(--grey);
+}
+.content {
+  margin-top: 5px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  text-rendering: optimizeLegibility;
+  font-size: 23px;
+}
+.timeAgo {
+  display: inline-block;
+  margin-top: 15px;
+  color: var(--grey);
+}

@@ -26,14 +26,15 @@ export default function Deveet ({ id, userId, avatar, displayName, content, imag
         <Avatar src={avatar} />
       </div>
       <section className={styles.wrapper}>
-        <p className={styles.userName}>
-          <strong>{displayName}</strong>
+        <div className={styles.user}>
+          <p className={styles.displayName}>{displayName}</p>
+          <p className={styles.userName}>@username</p>
           <Link href={`/status/${id}`}>
             <a>
               <time className={styles.timeAgo} title={date}> • {timeago}</time>
             </a>
           </Link>
-        </p>
+        </div>
         <p className={styles.content}>
           {content}
         </p>

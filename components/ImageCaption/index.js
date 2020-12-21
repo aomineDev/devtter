@@ -2,11 +2,15 @@ import IconButton from '../shared/IconButton'
 
 import styles from './styles.module.css'
 
-export default function ImageCaption ({ src, withBtnCloseImg, isBtnCloseImgDisabled, handleCloseImg }) {
+export default function ImageCaption ({ src, fluid, withBtnCloseImg, isBtnCloseImgDisabled, handleCloseImg }) {
   if (!src) return false
 
+  let captionClassName = `${styles.caption} `
+
+  if (fluid) captionClassName += styles.fluid
+
   return (
-    <div className={styles.imgWrapper}>
+    <div className={captionClassName}>
       <img
         src={src}
         className={styles.image}

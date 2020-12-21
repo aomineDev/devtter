@@ -2,9 +2,11 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  font-size: inherit;
 }
 body {
   font-family: var(--fonts);
+  font-size: var(--default-font-size);
 }
 a {
   color: inherit;

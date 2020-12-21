@@ -28,4 +28,8 @@
   --width-app: 425px;
   --size-hud: 49px;
   --size-component: 49px;
+  --padding-app-x: 15px;
+  --padding-app-y: 10px;
+  --default-font-size: 15px;
+  --title-font-size: 19px;
 }

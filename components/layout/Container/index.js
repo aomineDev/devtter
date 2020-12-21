@@ -1,14 +1,14 @@
 import styles from './styles.module.css'
 
-export default function Container ({ children, fullHeight, withScroll }) {
-  let sectionClassName = `${styles.container} `
+export default function Container ({ children, withHeader, withHUD }) {
+  let containerClassName = `${styles.container} `
 
-  if (fullHeight) sectionClassName += `${styles.fullHeight} `
+  if (withHeader) containerClassName += `${styles.withHeader} `
 
-  if (withScroll) sectionClassName += styles.withScroll
+  if (withHUD) containerClassName += styles.withHUD
 
   return (
-    <section className={sectionClassName}>
+    <section className={containerClassName}>
       {children}
     </section>
   )

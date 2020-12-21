@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
   display: flex;
-  padding: 10px 15px;
+  padding: var(--padding-app-y) var(--padding-app-x);
   animation: animate 3s infinite;
   overflow: hidden;
 }

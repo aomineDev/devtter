@@ -1,13 +1,14 @@
 .container {
   margin-top: var(--size-hud);
+  max-height: 100%;
   overflow-y: auto;
 }
-.container.fullHeight {
-  height: calc(100% - var(--size-hud));
+.container.withHeader {
+  max-height: calc(100% - var(--size-hud));
 
 }
-.container.withScroll {
-  height: calc(100% - (var(--size-hud) * 2));
+.container.withHUD {
+  max-height: calc(100% - (var(--size-hud) * 2));
 }
 .container::-webkit-scrollbar {
   width: 5px;

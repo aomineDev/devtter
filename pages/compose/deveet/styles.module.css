@@ -4,7 +4,7 @@
 }
 .wrapper {
   display: flex;
-  padding: 10px 15px;
+  padding: var(--padding-app-y) var(--padding-app-x);
 }
 .avatarWrapper {
   margin-right: 10px;
