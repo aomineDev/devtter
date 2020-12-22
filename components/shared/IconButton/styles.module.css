@@ -17,6 +17,13 @@
 .btn.invert > div {
   filter: invert(1);
 }
+.btn.grayScale > div {
+  filter: grayscale(.8);
+}
+.btn.grayScale:hover > div {
+  transition: .3s;
+  filter: grayscale(0);
+}
 .btn.bg-color-transparent {
   background-color: transparent;
 }

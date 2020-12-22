@@ -8,10 +8,9 @@ export default function useUser (guard) {
   const router = useRouter()
 
   useEffect(() => {
-    let isMounted = true
-    if (isMounted) onAuthStateChanged(setUser)
+    const unsubscribe = onAuthStateChanged(setUser)
 
-    return () => { isMounted = false }
+    return () => unsubscribe()
   }, [])
 
   useEffect(() => {

@@ -1,7 +1,3 @@
-.btn {
-  background-color: var(--primary);
-  color: var(--light);
-}
 .wrapper {
   display: flex;
   padding: var(--padding-app-y) var(--padding-app-x);

@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 
 // services
-import { getDeveets } from 'services/deveets'
+import { listenDeveets } from 'services/deveets'
 
 // hooks
 import useUser from 'hooks/useUser'
@@ -25,12 +25,18 @@ export default function Home () {
   const router = useRouter()
 
   useEffect(() => {
+    let unsubscribe = null
+
     if (!user) return
 
-    getDeveets()
-      .then(setDeveets)
-      .then(() => setIsDeveetsLoading(false))
-      .catch(error => console.error('Error adding document: ', error))
+    unsubscribe = listenDeveets((err, newDeveets) => {
+      if (err) return console.error('Error adding document: ', err)
+
+      setDeveets(newDeveets)
+      setIsDeveetsLoading(false)
+    })
+
+    return () => unsubscribe && unsubscribe()
   }, [user])
 
   function handleNavigation () {

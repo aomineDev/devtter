@@ -1,3 +1,4 @@
+import { getDeveet } from 'services/deveets'
 import formatDate from 'utils/formatDate'
 
 import Head from 'next/head'
@@ -10,9 +11,7 @@ import ImageCaption from 'components/ImageCaption'
 
 import styles from './styles.module.css'
 
-export default function DeveetStatus (props) {
-  const { data: deveet } = props
-
+export default function DeveetStatus ({ deveet }) {
   const date = formatDate(deveet.createdAt)
 
   return (
@@ -47,10 +46,9 @@ export async function getServerSideProps (context) {
   const { params, res } = context
   const { deveetId } = params
 
-  const response = await fetch(`http://localhost:3000/api/deveet/${deveetId}`)
-  const props = await response.json()
+  const { response, deveet } = await getDeveet(deveetId)
 
-  if (response.ok) return { props }
+  if (response.ok) return { props: { deveet } }
 
   if (res) {
     res.writeHead(301, { location: '/notFound' }).end()

@@ -13,8 +13,8 @@ function getDateDiffs (timestamp) {
 
   for (const { unit, value } of dateUnits) {
     if (elapsed > value || unit === 's') {
-      const time = Math.floor(elapsed / value)
       // const time = Math.floor(elapsed / value) * -1
+      const time = Math.floor(elapsed / value)
 
       return { time, unit }
     }
@@ -39,10 +39,9 @@ export default function useTimeago (timestamp) {
 
   // const language = navigator.language || navigator.userLanguage
 
-  // const rtf = new Intl.RelativeTimeFormat(language, { style: 'narrow' })
-
+  // const rtf = new Intl.RelativeTimeFormat(language, { style: 'short' })
   const { time, unit } = timeago
 
-  return time + unit
   // return rtf.format(time, unit)
+  return time + unit
 }

@@ -15,8 +15,9 @@
 .wrapper {
   display: flex;
   align-items: center;
+  /* justify-content: space-between; */
 }
-.navigation {
+.avatarWrapper {
   width: 59px;
 }
 .title {

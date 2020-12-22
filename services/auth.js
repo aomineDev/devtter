@@ -13,7 +13,7 @@ export function signOut () {
 }
 
 export function onAuthStateChanged (onChange) {
-  firebase
+  return firebase
     .auth()
     .onAuthStateChanged(user => {
       const normalizedUser = user && mapUser(user)

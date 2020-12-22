@@ -93,7 +93,6 @@ export default function ComposeDeveet () {
       <InnerHeader>
         <Button
           handleClick={handleCreateDeveet}
-          customeStyles={styles.btn}
           isDisabled={isBtnDisabled}
           isLoading={isBtnLoading}
         >

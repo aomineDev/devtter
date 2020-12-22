@@ -1,22 +1,25 @@
 import { signOut } from 'services/auth'
+
 import Avatar from 'components/Avatar'
+import IconButton from 'components/shared/IconButton'
 
 import styles from './styles.module.css'
 
 export default function Header ({ avatar, title }) {
-  function handleClick () {
-    signOut()
-  }
-
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
-        <nav className={styles.navigation}>
+        <div className={styles.avatarWrapper}>
           { avatar && <Avatar src={avatar} size='30' /> }
-        </nav>
+        </div>
         <h2 className={styles.title}>{title}</h2>
-        <button onClick={handleClick}>Logout</button>
       </div>
+      <IconButton
+        iconName='sign-out'
+        theme='primary'
+        isIconGrayScale
+        handleClick={signOut}
+      />
     </header>
   )
 }

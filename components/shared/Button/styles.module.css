@@ -9,13 +9,6 @@
 .btn:hover {
   opacity: .8;
 }
-.btn.isDisabled,
-.btn.isLoading {
-  pointer-events: none;
-}
-.btn.isDisabled {
-  background-color: var(--gray);
-}
 .btnWithIcon {
   display: flex;
   justify-content: center;
@@ -23,4 +16,54 @@
 }
 .wrapper {
   margin-right: 10px;
+}
+.btn.bg-color-transparent {
+  background-color: transparent;
+}
+.btn.text-color-transparent {
+  color: transparent;
+}
+.btn.bg-color-primary {
+  background-color: var(--primary);
+}
+.btn.text-color-primary {
+  color: var(--primary);
+}
+.btn.bg-color-light {
+  background-color: var(--light);
+}
+.btn.text-color-light {
+  color: var(--light);
+}
+.btn.bg-color-dark {
+  background-color: var(--dark);
+}
+.btn.text-color-dark {
+  color: var(--dark);
+}
+.btn.bg-color-blue {
+  background-color: var(--blue);
+}
+.btn.text-color-blue {
+  color: var(--blue);
+}
+.btn.bg-color-red {
+  background-color: var(--red);
+}
+.btn.text-color-red {
+  color: var(--red);
+}
+.btn.bg-color-green {
+  background-color: var(--green);
+}
+.btn.text-color-green {
+  color: var(--green);
+}
+.btn.isDisabled,
+.btn.isLoading {
+  pointer-events: none;
+}
+.btn.isDisabled {
+  background-color: var(--gray);
+  color: var(--light);
 }

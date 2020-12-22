@@ -47,8 +47,8 @@ export default function Login () {
         {
           user === null
             ? <Button
-              customeStyles={styles.btn}
               iconName='github'
+              bgColor='dark'
               handleClick={handleLogin}
               isLoading={isLoading}
             >

@@ -7,23 +7,30 @@
   height: 8em;
   border-radius: 50%;
   background-image: linear-gradient(to right, var(--light) 10%, transparent 42%);
+  background-color: inherit;
   animation: load 1.4s infinite linear;
   transform: translateZ(0);
 }
-.loader:before,
-.loader:after {
+.loader.darkSpinner {
+  background-image: linear-gradient(to right, var(--dark) 10%, transparent 42%);
+}
+.loader::before,
+.loader::after {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
 }
-.loader:before {
+.loader::before {
   width: 50%;
   height: 50%;
   background: var(--light);
   border-radius: 100% 0 0 0;
 }
-.loader:after {
+.loader.darkSpinner::before {
+  background: var(--dark);
+}
+.loader::after {
   margin: auto;
   bottom: 0;
   right: 0;

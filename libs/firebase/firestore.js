@@ -2,15 +2,19 @@ import firebase from './client'
 
 const db = firebase.firestore()
 
-function getAll (collection, orderBy, order) {
-  if (orderBy && !order) return db.collection(collection).orderBy(orderBy).limit(10).get()
+export function getRef (collection, orderBy, order) {
+  if (orderBy && !order) return db.collection(collection).limit(10).orderBy(orderBy)
 
-  if (orderBy && order) return db.collection(collection).orderBy(orderBy, order).limit(10).get()
+  if (orderBy && order) return db.collection(collection).limit(10).orderBy(orderBy, order)
 
-  return db.collection(collection).limit(10).get()
+  return db.collection(collection).limit(10)
 }
 
-function create (collection, data) {
+export function getAll (collection, orderBy, order) {
+  return getRef(collection, orderBy, order).get()
+}
+
+export function create (collection, data) {
   const payload = {
     ...data,
     createdAt: new Date()
@@ -21,5 +25,6 @@ function create (collection, data) {
 
 export default {
   getAll,
-  create
+  create,
+  getRef
 }

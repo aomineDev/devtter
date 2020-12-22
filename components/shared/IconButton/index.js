@@ -2,15 +2,17 @@ import Icon from '../Icon'
 
 import styles from './styles.module.css'
 
-export default function IconButton ({ iconName, btnSize, iconWidth, iconHeight, isIconInvert, bgColor, theme, isDisabled, handleClick }) {
+export default function IconButton ({ iconName, btnSize, iconWidth, iconHeight, isIconInvert, isIconGrayScale, bgColor, theme, isDisabled, handleClick }) {
   let btnClassName = `${styles.btn} `
 
   if (isDisabled) btnClassName += `${styles.disabled} `
 
-  if (isIconInvert) btnClassName += styles.invert
+  if (isIconInvert) btnClassName += `${styles.invert} `
 
-  const finalBgColor = `bg-color-${bgColor}` || 'bg-color-transparent'
-  const finalTheme = `theme-${theme}` || 'theme-transparent'
+  if (isIconGrayScale) btnClassName += styles.grayScale
+
+  const finalBgColor = bgColor ? `bg-color-${bgColor}` : 'bg-color-transparent'
+  const finalTheme = theme ? `theme-${theme}` : 'theme-transparent'
 
   btnClassName += ` ${styles[finalTheme]} ${styles[finalBgColor]}`
 
