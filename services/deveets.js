@@ -5,17 +5,22 @@ import { uploadImage } from 'libs/firebase/storage'
 
 const collection = 'deveets'
 
+const getDeveetOptions = {
+  collection,
+  orderBy: 'createdAt',
+  order: 'desc',
+  limit: 10
+}
+
 export function getDeveets () {
   return firestore
-    .getAll(collection, 'createdAt', 'desc')
+    .getAll(getDeveetOptions)
     .then(({ docs }) => {
       return docs.map(mapDeveets)
     })
 }
 
 export async function getDeveet (deveetId) {
-  console.log(config)
-  console.log('test', process.env.TEST)
   const response = await fetch(`${config.apiUrl}/deveet/${deveetId}`)
   const { data } = await response.json()
 
@@ -24,7 +29,7 @@ export async function getDeveet (deveetId) {
 
 export function listenDeveets (cb) {
   return firestore
-    .getRef(collection, 'createdAt', 'desc')
+    .getRef(getDeveetOptions)
     .onSnapshot(({ docs }) => {
       const newDeveets = docs.map(mapDeveets)
       cb(null, newDeveets)

@@ -4,8 +4,7 @@ import Head from 'next/head'
 
 import AppLayout from 'layouts/AppLayout'
 
-import 'styles/theme.css'
-import 'styles/globals.css'
+import 'assets/css/styles.css'
 
 export default function Devtter ({ Component, pageProps }) {
   return (

@@ -2,16 +2,20 @@ import firebase from './client'
 
 const db = firebase.firestore()
 
-export function getRef (collection, orderBy, order) {
-  if (orderBy && !order) return db.collection(collection).limit(10).orderBy(orderBy)
+export function getRef ({ collection, orderBy, order, limit }) {
+  if (orderBy && !order && limit) return db.collection(collection).limit(limit).orderBy(orderBy)
+  if (orderBy && !order && !limit) return db.collection(collection).orderBy(orderBy)
 
-  if (orderBy && order) return db.collection(collection).limit(10).orderBy(orderBy, order)
+  if (orderBy && order && limit) return db.collection(collection).limit(limit).orderBy(orderBy, order)
+  if (orderBy && order && !limit) return db.collection(collection).orderBy(orderBy, order)
 
-  return db.collection(collection).limit(10)
+  if (limit) return db.collection(collection).limit(limit)
+
+  return db.collection(collection)
 }
 
-export function getAll (collection, orderBy, order) {
-  return getRef(collection, orderBy, order).get()
+export function getAll (options) {
+  return getRef(options).get()
 }
 
 export function create (collection, data) {

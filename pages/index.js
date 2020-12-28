@@ -9,7 +9,7 @@ import Image from 'next/image'
 import Button from 'components/shared/Button'
 import Loader from 'components/shared/Loader'
 
-import styles from 'styles/login.module.css'
+import styles from 'assets/css/modules/login.module.css'
 
 export default function Login () {
   const [isLoading, setIsLoading] = useState(false)

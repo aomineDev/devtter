@@ -17,7 +17,6 @@ export default function Header ({ avatar, title }) {
       <IconButton
         iconName='sign-out'
         theme='primary'
-        isIconGrayScale
         handleClick={signOut}
       />
     </header>
