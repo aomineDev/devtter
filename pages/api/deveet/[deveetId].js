@@ -1,22 +1,18 @@
 import { firestore } from 'libs/firebase/admin'
 
-export default (req, res) => {
+export default async (req, res) => {
   const { query: { deveetId } } = req
 
-  firestore
-    .collection('deveets')
-    .doc(deveetId)
-    .get()
-    .then(doc => {
-      if (!doc.exists) return res.status(404).end()
+  const doc = await firestore.collection('deveets').doc(deveetId).get()
 
-      const data = doc.data()
-      data.id = doc.id
-      data.createdAt = +data.createdAt.toDate()
+  if (!doc.exists) return res.status(404).end()
 
-      res.status(200).json({
-        data,
-        message: 'deveet listed'
-      })
-    })
+  const data = doc.data()
+  data.id = doc.id
+  data.createdAt = +data.createdAt.toDate()
+
+  res.status(200).json({
+    data,
+    message: 'deveet listed'
+  })
 }
